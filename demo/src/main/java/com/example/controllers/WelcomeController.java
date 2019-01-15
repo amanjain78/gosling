@@ -1,5 +1,6 @@
 package com.example.controllers;
 
+import com.example.model.User;
 import com.example.service.TestService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,20 @@ public class WelcomeController {
         testService.test();
         log.info("M1"+Thread.currentThread().getName());
 
+
         return "sample";
     }
+
+    @RequestMapping(value = "/createUser")
+    public String createUser(){
+        User user = new User();
+        user.setId(1);
+        user.setName("aman");
+        testService.saveUser(user);
+        return "sample";
+    }
+
+
 
 
 }
